@@ -287,10 +287,14 @@ int main() {
     int a[] = {1,2,3,4,5,6,7,8,9,10,11,12};
 
     Nodo<int> * head = nullptr;
+    LE<int>* le = new LE<int>;
+    for (int i {0}; i<12; i++)
+        head = new Nodo<int>(a[i],head); //Crea una lists de atras hacia adelante 
+    le->head = head;
+    le->print();
+    
 
-    for (int i {0}; i<11; i++)
-        Nodo<int>* head = new Nodo<int>(a[i],head); //Crea una lists de atras hacia adelante 
-    head->print();
+
     for(Nodo<int>* i = head; head ;i=head){ // Inicializa Lista enlazada 
         head=head->next;
         delete i;
