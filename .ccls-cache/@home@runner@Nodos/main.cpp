@@ -1,65 +1,14 @@
 #include <iostream>
-#include <math.h>
+
+#include "nodoT.h"
 
 using namespace std;
-
-// Nuevo Nodo con template y construcctor 
-
-template <class T>
-struct Nodo {
-    T valor;
-    Nodo* next,* prev; 
-    Nodo(T v, Nodo * n = nullptr){
-        valor = v;
-        next = n;
-    }
-
-};
-
+/*
 // nodo usado antes 
 struct nodo {
     int valor;
     nodo* next,* prev;
 };
-
-
-template <class T>
-struct LE {
-    Nodo<T> * head = nullptr; 
-    void add(T valor);
-    void del(T valor);
-    void print();
-    bool find(T valor, Nodo<T>*& pos);
-    ~LE();
-
-};
-
-template <class T>
-void LE<T>::print(){
-    for (Nodo<T>* p=head;p;p=p->next){
-        cout<<p->valor << " \n";
-
-    }
-
-}
-
-template <class T>
-bool LE<T>::find(T valor, Nodo<T>*& pos){
-    pos=head;
-    if(!(head->next))
-        return false;
-    for(; pos->next; pos=pos->next){
-        if(pos->next->valor==valor){
-            return true;
-        }
-    }
-    return false;
-}
-
-template <class T>
-void LE<T>::add(T valor){
-    //
-}
 
 
 void printas(nodo* head) {// imprimer desde el head al tail 
@@ -94,41 +43,6 @@ void swapdir(nodo* &a, nodo* &b){
     b->next = aux->next;
     b->prev = aux->prev;
 }
-
-/*
-nodo* init(nodo* head, int* ini, int* fin) {
-    nodo* i = head;
-    head->prev = nullptr;
-    for( ; ini<=fin ; ini++) {
-        i->valor = *ini;
-        if(ini!=fin) {
-            i->next = new nodo;
-            i->next->prev = i;
-            i = i->next;
-        }
-
-    }
-    i->next = nullptr;
-    return i;
-}
-*/
-/*
-nodo* init(int* ini, int* fin) {// solo se usa 1 puntero
-    nodo* i = new nodo;
-    i->prev = nullptr;
-    for( ; ini<=fin ; ini++) {
-        i->valor = *ini;
-        if(ini!=fin) {
-            i->next = new nodo;
-            i->next->prev = i;
-            i = i->next;
-        }
-
-    }
-    i->next = nullptr;
-    return i;
-}
-*/
 
 nodo* arrtole(int* ini, int* fin) {// solo se usa 1 puntero head
     
@@ -167,27 +81,6 @@ void arrtoLE(int* ini, int* fin, nodo*&head, nodo*&tail) {// usa 2 punteros head
     tail = i;
 }
 
-
-
-
-
-
-nodo* init(nodo* head ,int* ini, int* fin){ //
-    nodo* i = head;
-    i->prev = nullptr;
-    for( ; ini<=fin ; ini++) {
-        i->valor = *ini;
-        if(ini!=fin) {
-            i->next = new nodo;
-            i->next->prev = i;
-            i = i->next;
-        }
-
-    }
-    i->next = nullptr;
-    return i;
-}
-
 void add(nodo* head, nodo* nuevo,int where){
     //nodo* aux = head;
     for(int i = 0; i<where-1; i++){head=head->next;}
@@ -197,7 +90,7 @@ void add(nodo* head, nodo* nuevo,int where){
     head->next = nuevo;
 }
 
-/*
+
 int sum(int a, int b) {
     return a+b;
 }
@@ -210,7 +103,7 @@ int mul(int a, int b) {
 int divi(int a, int b) {
     return (int)(a/b);
 }
-*/
+
 
 bool par(int a){
     return (a%2 == 0);
@@ -247,7 +140,7 @@ void printArr(int * ini, int * fin){
         cout << *ini << " ";
 }
 
-typedef int(*ppf)(int,int);
+typedef int(*ppf)(int,int);*/
 
 int main() {
     /*
@@ -286,12 +179,16 @@ int main() {
     
     int a[] = {1,2,3,4,5,6,7,8,9,10,11,12};
 
-    Nodo<int> * head = nullptr;
-    LE<int>* le = new LE<int>;
+    Nodo<int>* head = nullptr;
+    Lista<int>* le = new Lista<int>;
     for (int i {0}; i<12; i++)
         head = new Nodo<int>(a[i],head); //Crea una lists de atras hacia adelante 
     le->head = head;
     le->print();
+    Nodo<int>* pos;
+    if(le->find(7,pos)){
+        std::cout << "7 : " << pos->valor;
+    }
     
 
 
@@ -299,6 +196,8 @@ int main() {
         head=head->next;
         delete i;
     }
+
+    
     /*
     nodo* head;
     //nodo* head = arrtole(head,a,a+11);
