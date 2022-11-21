@@ -1,10 +1,62 @@
 #include <iostream>
 #include "NodoT.cpp"
 #include "Functores.cpp"
+#include "Tarea1.h"
+#include "Tarea2.h"
+
+#define FORN(i,a,b) for(int i = a ; i<=b; i++)
 
 int main() {
-    /*
 
+    // FUNCION SPLIT PARA EXAMEN CON PUNTERO A FUNCIÓN O FUNCTORES 
+
+    // -------- MERGE ------------
+
+    int la[] = {18,16,14,12,10,8,6,4,2};
+    int lb[] = {15,13,11,9,7,5,3,1};
+    Nodo<int>* a;
+    Nodo<int>* b;
+    
+    LE<int>* le = new LE<int>;
+    
+    FORN(i,0,7){
+        b = new Nodo<int>(lb[i],b);
+    }
+    FORN(i,0,8){
+        a = new Nodo<int>(la[i],a);
+    }
+
+    Merge(a,b);
+
+    le->head = a;
+    le->print();
+
+    cout << "b->"<< b;
+    
+
+    
+    // ------ Nodos --------
+    
+    /*
+    int a[] = {1,2,3,4,5,6,7,8};
+    
+    nodo* head = new nodo;
+    //nodo* tail = init(head,a,a+7);
+    nodo* tail;
+    arrtoLE(a,a+7,head,tail);
+    printdes(tail);
+
+    printas(head);
+
+    std::cout << "\n\n";
+    
+    printArr(a,a+8);
+    cout << endl;
+    SPLIT(a,a+8,inpar);
+    printArr(a,a+8);
+    */
+    
+    /*
     int (*pf[2][2])(int,int) = {{sum,res},{mul,divi}};// Sin typedef
     //ppf pf[2][2] = {{sum,res},{mul,divi}};// Con typedef
     for(int (*(*pfn)[2])(int,int) = pf; pfn<pf+2; pfn++){
@@ -38,14 +90,15 @@ int main() {
 
     // ----- Functores -------
 
+    /*
     functor1<int> c(3);
     cout << c(5) << "\n";
+    */
     
-    
 
 
 
-    // ----- Losta enlazada ------
+    // ----- Lista enlazada ------
     /*
 
     int a[] = {1,2,3,4,5,6,7,8,9,10,11,12};
@@ -70,28 +123,5 @@ int main() {
         delete i;
     }
 
-    */
-
-
-    /*
-    nodo* head;
-    //nodo* head = arrtole(head,a,a+11);
-    nodo* tail;
-    arrtoLE(a,a+11,head,tail);
-    printdes(tail);
-    
-    nodo* nuevo = new nodo;
-    nuevo->valor = 9;
-    //add(head,nuevo,5);
-    
-    printas(head);
-    */
-    
-    /*
-    printArr(a,a+12);
-    cout << endl;
-    cout << endl;
-    SPLIT(a,a+11,par);
-    printArr(a,a+12);
     */
 }
