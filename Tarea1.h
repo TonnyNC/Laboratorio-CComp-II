@@ -10,7 +10,7 @@ void printas(nodo* head) {// imprimer desde el head al tail
     for(nodo* i = head ; i; i = i->next) {
         std::cout<< i->valor <<" ";
     }
-    std::cout<<endl;
+    std::cout<<std::endl;
 }
 
 void printdes(nodo* tail) {// imprime desde tail hasta head 
@@ -182,6 +182,6 @@ void SPLIT(int* ini, int* fin ,bool(*pf)(int)){
 
 void printArr(int * ini, int * fin){
     for(;ini<fin;ini++)
-        cout << *ini << " ";
+        std::cout << *ini << " ";
 }
 

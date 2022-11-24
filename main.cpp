@@ -1,10 +1,10 @@
 #include <iostream>
 #include "NodoT.cpp"
-#include "Functores.cpp"
+#include "Functores.h"
 #include "Tarea1.h"
 #include "Tarea2.h"
 
-#define FORN(i,a,b) for(int i = a ; i<=b; i++)
+#define FORN(i,a,b) for(int i = a ; i>=b; i--)
 
 int main() {
 
@@ -12,26 +12,31 @@ int main() {
 
     // -------- MERGE ------------
 
-    int la[] = {18,16,14,12,10,8,6,4,2};
-    int lb[] = {15,13,11,9,7,5,3,1};
+    //int la[] = {12,10,8,6,4,2};
+    int la1[] = {2,4,6,8,10,12};
+    //int lb[] = {15,13,11,9,7,5,3,1};
+    int lb1[] = {1,3,5,7,9,11,13,15};
     Nodo<int>* a;
     Nodo<int>* b;
     
     LE<int>* le = new LE<int>;
     
-    FORN(i,0,7){
-        b = new Nodo<int>(lb[i],b);
+    FORN(i,7,0){
+        b = new Nodo<int>(lb1[i],b);
     }
-    FORN(i,0,8){
-        a = new Nodo<int>(la[i],a);
+    FORN(i,5,0){
+        a = new Nodo<int>(la1[i],a);
     }
+
+    le->head = a;
+    le->print();
 
     Merge(a,b);
 
     le->head = a;
     le->print();
 
-    cout << "b->"<< b;
+    std::cout << "b->"<< b;
     
 
     
